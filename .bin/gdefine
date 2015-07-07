@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+define_google() {
+    query="$(echo "$*" | sed 's/\ /\+/g')"
+    url="http://www.google.com/search?client=safari&rls=en&q=define+${query}&ie=UTF-8&oe=UTF-8"
+    open -b com.apple.Safari "$url"
+}
+
+
+main() {
+    define_google
+}
+
+main "$@"

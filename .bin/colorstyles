@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+print_color_styles() {
+    for ((i=0; i < 15; i++)) {
+        tput setaf $i
+        echo 'Regular: $(tput setaf '$i')'; tput sgr0
+
+        #tput bold; tput setaf $i
+        #echo -e 'Bold:    $(tput setaf '$i')'; tput sgr0
+
+        tput rev; tput setaf $i
+        echo -e 'Rev:     $(tput setaf '$i')'; tput sgr0
+
+        echo ''
+    }
+}
+
+main() {
+    print_color_styles
+}
+
+main "$@"

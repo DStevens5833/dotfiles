@@ -1,0 +1,9 @@
+#!/usr/bin/env
+
+hopper() {
+    if [[ "$1" == "-d" ]]; then
+        sudo hopper --database "$2" --macho --fat-x86-64 --analysis --objective-c
+    else
+        sudo hopper --executable "$1" --macho --fat-x86-64 --analysis --objective-c
+    fi
+}

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+create_new_file() {
+    touch "$FILE_NAME"
+}
+
+append_template() {
+    echo '#!/usr/bin/env bash'
+    echo 
+    echo 'main() {'
+    echo '}'
+    echo 
+    echo 'main "$@"'
+} >> "$FILE_NAME"
+
+make_executable() {
+    chmod +x "$FILE_NAME"
+}
+
+main() {
+    declare -r FILE_NAME="$1"
+
+    create_new_file
+    append_template
+    make_executable
+}
+
+main "$@"

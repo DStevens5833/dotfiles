@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+cd /Users/ds/Documents/Development/repositories/retools/radare2
+
+SUDO=sudo
+MAKE=gmake
+MAKE_JOBS=12
+CFGARGS="--with-sysmagic --with-syscapstone --with-syszip --with-openssl --with-compiler=clang CC=clang --with-ostype=darwin"
+CFLAGS="-I/usr/local/Cellar/openssl/1.0.2c/include"
+LDFLAGS="-lssl -lcrypto -lz"
+PREFIX=/usr
+INSTALL_TARGET=symstall
+
+main() {
+    make clean
+    sudo make uninstall
+    sudo make purge
+
+    git pull
+    
+    ./autogen.sh ${CFARGS} CFLAGS="${CFLAGS}" CFLAGS="${LDFLAGS}" --prefix=${PREFIX} 
+    ${MAKE} -j${MAKE_JOBS}
+    ${SUDO} ${MAKE} ${INSTALL_TARGET}
+
+    cd binr/radare2
+    ${SUDO} ${MAKE} osxsign
+}
+
+main "$@"

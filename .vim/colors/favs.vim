@@ -1,0 +1,1 @@
+/Users/ds/Documents/dotfiles/vim/favs.vim

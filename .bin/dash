@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+query_dash() {
+    if [[ $# -lt 1 ]] || [[ $# -gt 2 ]]; then
+        echo -e "Usage: dash [\e[37mquery\e[0m]"
+        echo -e "       dash [\e[37mkeyword\e[0m]:[\e[37mquery\e[0m]"
+        echo
+
+        echo -e "       \e[31mquery\e[0m           string to search for"
+        echo "                        (e.g. printf, objc_msgSend, puts)"
+        echo 
+
+        echo -e "       \e[31mkeyword\e[0m         type of docset to search for"
+        echo "                        (e.g. cpp, c, osx, ios, php, etc)"
+        echo
+
+        return 1
+    elif [[ $# -eq 1 ]]; then
+        open dash://"$1"
+    elif [[ $# -eq 2 ]]; then
+        open dash://"$1":"$2"
+    fi
+}
+
+main() {
+    query_dash "$@"
+}
+
+main "$@"

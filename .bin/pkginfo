@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+print_package_info() {
+    for flag in -volinfo -pkginfo -dominfo; do
+        echo -e "\e[31m$flag\e[0m"
+        sudo installer "$flag" -pkg "$1"
+        echo ""
+    done
+}
+
+main() {
+    print_package_info
+}
+
+main "$@"

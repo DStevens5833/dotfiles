@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+colors=("$(tput setaf 1)" "$(tput setaf 2)" "$(tput setaf 3)" "$(tput setaf 4)"
+"$(tput setaf 5)" "$(tput setaf 6)" "$(tput setaf 7)" "$(tput setaf 8)" 
+"$(tput setaf 9)"
+)
+
+attrs=("" "$(tput bold)" "$(tput smul)" "$(tput rev)")
+
+function print_color_text() {
+    for ((j = 1; j < 10; j++)) {
+        for ((i = 0; i < 4; i++)) {
+            echo -n "${colors[$j]}${attrs[$i]}Test$(tput sgr0)  "
+        }
+        echo
+    }
+}
+
+function main() {
+    print_color_text
+}
+
+main "$@"

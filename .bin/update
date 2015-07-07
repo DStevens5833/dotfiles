@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+declare -i VERBOSE=1
+
+log_msg() {
+    if [[ $VERBOSE -eq 1 ]]; then
+        msg_param="$1"
+        echo -e "\e[37m * \e[7;31m${msg_param}\e[0m"
+    fi
+}
+
+# Homebrew
+update_homebrew() {
+    log_msg "brew update"
+    brew update
+
+    log_msg "brew upgrade --all"
+    brew upgrade --all
+
+    log_msg "brew cleanup"
+    brew cleanup
+
+    log_msg "cask cleanup"
+    brew cask cleanup
+
+    log_msg "brew prune"
+    brew prune
+}
+
+# Python2
+update_pip2() {
+    pkgs=$(python -m pip list -o | sed 's/ (.*//g')
+    for pkg in ${pkgs[@]}; do
+        log_msg "python -m pip install --upgrade $pkg"
+        python -m pip install --upgrade $pkg
+    done
+}
+
+# Python3
+udpate_pip3() {
+    pkgs=$(python3 -m pip list -o | sed 's/ (.*//g')
+    for pkg in ${pkgs[@]}; do
+        log_msg "python3 -m pip install --upgrade $pkg"
+        python3 -m pip install --upgrade $pkg
+    done
+}
+
+# Ruby
+update_gems() {
+    log_msg "gem update"
+    gem update
+}
+
+# Apple
+update_appstore() {
+    log_msg "softwareupdate --install --all --verbose"
+    softwareupdate --install --all
+}
+
+main() {
+    update_homebrew
+    update_pip2
+    udpate_pip3
+    update_gems
+    update_appstore
+}
+
+main "$@"

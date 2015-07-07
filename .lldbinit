@@ -1,0 +1,2 @@
+command script import ~/.lldb/fsa.py
+command script import /usr/local/lib/python3.4/site-packages/voltron-0.1-py3.4.egg/dbgentry.py

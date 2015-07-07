@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+main() {
+    perl -pe "s/checking /\e[37mchecking \e[0m/g; \
+        s/ yes/\e[32m yes\e[0m/g; \
+        s/ no/\e[31m no\e[0m/g; \
+        s/configure: /\e[33mconfigure: \e[0m/g; \
+        s/config.status: /\e[34mconfig.status: \e[0m/g; \
+        s/=== /\e[35m=== \e[0m/g; \
+        s/-- /\e[35m-- \e[0m/g; \
+        s/-=-=-=-=-=-=-=-=-=-= /\e[36m-=-=-=-=-=-=-=-=-=-= \e[0m/g; \
+        s/ =-=-=-=-=-=-=-=-=-=-/\e[36m =-=-=-=-=-=-=-=-=-=-\e[0m/g; \
+        s/\//\e[37m\/\e[0m/g" < "$@"
+}
+
+main "$@"

@@ -1,0 +1,19 @@
+e asm.arch = x86
+e asm.bits = 64
+e asm.cpu = intel64
+e asm.demangle = true
+e asm.describe = false
+e asm.dwarf = true
+e asm.linescall = true
+e asm.os = osx
+e asm.pseudo = false
+e asm.stackptr = true
+e asm.syntax = intel
+e bin.demangle = true
+e bin.dwarf = true
+e cfg.fortunes = true
+eco solarized
+e file.analyze = false
+e scr.truecolor = true
+e scr.utf8 = true
+

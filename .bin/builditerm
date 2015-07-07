@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+CURR_DIR="$(pwd)"
+BASE_DIR="$HOME/Documents/repos/iTerm2"
+
+cd "$BASE_DIR"
+git pull
+git submodule update --init --recursive
+cd "$CURR_DIR"

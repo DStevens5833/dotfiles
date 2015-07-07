@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+out() {
+    printf "\e[31m%15s\e[0m -- %s\n" "$1" "$2"
+}
+
+list_help_files() {
+    out "ack"               "grep-like text finder"
+    out "class-dump"        "<empty>"
+    out "dd"                "convert and copy a file"
+    out "df"                "display free disk space"
+    out "diskutil"          "modify, verify and repair local disks"
+    out "dnstop"            "display various tables of DNS traffic on your network"
+    out "dtrace"            "generic front-end to the DTrace facility"
+    out "dtruss"            "process syscall details. Uses DTrace."
+    out "du"                "display disk usage statistics"
+    out "dyldinfo"          "displays information used by dyld in an executable"
+    out "file"              "determine file type"
+    out "fs_usage"          "report system calls and page faults related to filesystem activity in real-time"
+    out "fuser"             "list process IDs of all processes that have one or more files open"
+    out "gobjdump"          "display information from object files"
+    out "groups"            "show group memberships"
+    out "hdiutil"           "manipulate disk images (attach, verify, create, etc)"
+    out "heap"              "list all the malloc-allocated buffers in the process's heap"
+    out "hexdump"           "ASCII, decimal, hexadecimal, octal dump"
+    out "host"              "DNS lookup utility"
+    out "hostname"          "set or print name of current host system"
+    out "htop"              "interactive process viewer"
+    out "iftop"             "display bandwidth usage on an interface by host"
+    out "leaks"             "search a process's memory for unreferenced malloc buffers"
+    out "libtool"           "create libraries"
+    out "lsof"              "list open files"
+    out "malloc_history"    "show the malloc allocations that the process has performed"
+    out "mdfind"            "finds files matching a given query"
+    out "mdimport"          "import file hierarchies into the metadata datastore"
+    out "mdls"              "lists the metadata attributes for the specified file"
+    out "mdutil"            "manage the metadata stores used by Spotlight"
+    out "mitmdump"          "command-line version of mitmproxy. Think tcpdump for HTTP."
+    out "mitmproxy"         "interactive, SSL-capable man-in-the-middle proxy for HTTP with a console interface"
+    out "ngrep"             "network grep"
+    out "netstat"           "show network status"
+    out "nmap"              "network exploration tool and security / port scanner"
+    out "od"                "octal, decimal, hex, ASCII dump"
+    out "otool"             "object file displaying tool"
+    out "otx"               "<empty>"
+    out "pagestuff"         "Mach-O file page analysis tool"
+    out "PlistBuddy"        "read and write values to plists"
+    out "plockstat"         "front-end to DTrace to print statistics about POSIX mutexes and read/write locks"
+    out "rabin2"            "binary program info extractor"
+    out "radare2"           "advanced commandline hexadecimal editor, disassembler and debugger"
+    out "radiff2"           "unified binary diffing utility"
+    out "rafind2"           "advanced commanline hexadecimal editor"
+    out "ragg2-cc"          "CC frontend for compiling shellcodes"
+    out "ragg2"             "radare2 frontend for r_egg, compile programs into tiny binaries for x86-32/64 and arm."
+    out "rahash2"           "block based hasing utility"
+    out "ranlib"            "add or update the table of contents of archive libraries"
+    out "rasm2"             "radare2 assembler and disassembler tool"
+    out "rax2"              "radare base converter"
+    out "sc_usage"          "show system call usage statistics"
+    out "sdef"              "scripting definition extractor"
+    out "sdp"               "scripting definition (sdef) processor"
+    out "tcpdump"           "dump traffic on a network"
+    out "tmutil"            "Time Machine utility"
+    out "users"             "list current users"
+    out "vmmap"             "display the virtual memory regions allocated in a process"
+    out "xcode-select"      "manages the active developer directory for Xcode and BSD tools"
+    out "xcodebuild"        "build Xcode projects and workspaces"
+    out "xcrun"             "run or locate development tools and properties"
+    out "w"                 "display who is logged in and what they are doing"
+    out "who"               "display who is logged in"
+    out "whois"             "internet domain name and network number directory service"
+    out "xxd"               "make a hexdump or do the reverse"
+    out "zmap"              "the fast internet scanner"
+}
+
+
+main() {
+    if [ $# -gt 0 ]; then
+        list_help_files | grep "$1"
+    else
+        list_help_files
+    fi
+}
+
+main "$@"
